@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adiaha Inanga — Academic Journey</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #1a1a2e;
+    --paper:    #faf7f2;
+    --gold:     #d4a017;
+    --gold-lt:  #f0d97a;
+    --teal:     #2a7d6f;
+    --teal-lt:  #e0f4f0;
+    --coral:    #c9503f;
+    --coral-lt: #fce8e5;
+    --lavender: #6b5b9e;
+    --lav-lt:   #ece8f8;
+    --border:   #e0d9cc;
+    --muted:    #6b6560;
+    --g2:       #2a7d6f;
+    --g3:       #6b5b9e;
+    --g4:       #b07a1a;
+    --g4-lt:    #fdf3dc;
+    --g5:       #c9503f;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--ink);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.08;
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 20%;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: var(--teal);
+    opacity: 0.07;
+  }
+  .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .header-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .header-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .header-sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 520px;
+  }
+  .header-school {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── TABS ── */
+  .tab-bar {
+    background: #fff;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tab-bar-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab-bar-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 16px 28px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.2s, border-color 0.2s;
+    position: relative;
+  }
+  .tab-btn .tab-year {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: #aaa;
+    margin-top: 2px;
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--ink); font-weight: 600; }
+  .tab-btn[data-tab="g2"].active { border-color: var(--g2); }
+  .tab-btn[data-tab="g3"].active { border-color: var(--g3); }
+  .tab-btn[data-tab="g4"].active { border-color: var(--g4); }
+  .tab-btn[data-tab="g5"].active { border-color: var(--g5); }
+  .tab-btn[data-tab="g6"] { opacity: 0.45; cursor: default; }
+
+  /* ── CONTENT ── */
+  .content { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── GRADE HEADER ── */
+  .grade-banner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+    padding: 24px 28px;
+    border-radius: 12px;
+    border-left: 5px solid;
+  }
+  .grade-banner.g2 { background: var(--teal-lt); border-color: var(--g2); }
+  .grade-banner.g3 { background: var(--lav-lt); border-color: var(--g3); }
+  .grade-banner.g4 { background: var(--g4-lt); border-color: var(--g4); }
+  .grade-banner.g5 { background: var(--coral-lt); border-color: var(--g5); }
+  .grade-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.18;
+  }
+  .grade-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .grade-info p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ── ANALYSIS BOX ── */
+  .analysis-box {
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    border: 1px solid var(--border);
+    background: #fff;
+  }
+  .analysis-box h3 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .analysis-box p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: #3a3a3a;
+  }
+  .analysis-box p + p { margin-top: 12px; }
+  .highlight { font-weight: 600; color: var(--ink); }
+  .pos { color: var(--teal); font-weight: 600; }
+  .watch { color: var(--coral); font-weight: 600; }
+
+  /* ── SCORES GRID ── */
+  .scores-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .score-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: box-shadow 0.2s;
+  }
+  .score-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+  .score-subject {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .score-nums { display: flex; align-items: baseline; gap: 8px; margin-top: 2px; }
+  .score-final {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .score-final.high { color: var(--teal); }
+  .score-final.mid  { color: var(--lavender); }
+  .score-final.low  { color: var(--coral); }
+  .score-final.pass { color: var(--teal); font-size: 1.1rem; margin-top: 4px; }
+  .score-trend {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .trend-up   { color: var(--teal); }
+  .trend-down { color: var(--coral); }
+  .trend-flat { color: var(--muted); }
+  .score-bar-wrap { margin-top: 6px; background: #f0ece6; border-radius: 4px; height: 4px; overflow: hidden; }
+  .score-bar { height: 4px; border-radius: 4px; }
+  .score-bar.high { background: var(--teal); }
+  .score-bar.mid  { background: var(--lavender); }
+  .score-bar.low  { background: var(--coral); }
+
+  /* ── TEACHER QUOTES ── */
+  .quotes-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    margin-top: 32px;
+  }
+  .quote-block {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .quote-subject-bar {
+    padding: 10px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fff;
+  }
+  .quote-subject-bar.g2 { background: var(--g2); }
+  .quote-subject-bar.g3 { background: var(--g3); }
+  .quote-subject-bar.g4 { background: var(--g4); }
+  .quote-subject-bar.g5 { background: var(--g5); }
+  .quote-terms { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+  .quote-term { font-size: 13.5px; line-height: 1.65; color: #3a3a3a; }
+  .quote-term-label { font-weight: 600; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 3px; }
+
+  /* ── WORK HABITS TABLE ── */
+  .habits-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    margin-top: 32px;
+  }
+  .habits-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  .habits-table th {
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .habits-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #3a3a3a;
+  }
+  .habits-table tr:last-child td { border-bottom: none; }
+  .habits-table tr:nth-child(even) td { background: #faf7f2; }
+  .rating { display: inline-block; width: 24px; text-align: center; font-weight: 700; border-radius: 4px; padding: 1px 0; font-size: 12px; }
+  .rating-E { background: #d4edda; color: #1a6e33; }
+  .rating-M { background: #cce5ff; color: #0056b3; }
+  .rating-S { background: #fff3cd; color: #856404; }
+  .rating-N { background: #f8d7da; color: #842029; }
+  .rating-I { background: #e2d9f3; color: #4a3880; }
+
+  /* ── COMING SOON ── */
+  .coming-soon {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--muted);
+  }
+  .coming-soon .cs-icon { font-size: 3rem; margin-bottom: 16px; }
+  .coming-soon h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--ink); margin-bottom: 8px; }
+  .coming-soon p { font-size: 14px; max-width: 320px; margin: 0 auto; }
+
+  /* ── DIVIDER ── */
+  .section-divider { margin: 36px 0; border: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    .site-header { padding: 32px 20px 28px; }
+    .content { padding: 24px 16px 60px; }
+    .grade-banner { flex-direction: column; gap: 8px; }
+    .grade-num { font-size: 2.5rem; }
+    .scores-grid { grid-template-columns: repeat(2, 1fr); }
+    .tab-btn { padding: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow">St. Kitts International Academy</div>
+    <h1 class="header-name">Adiaha Inanga</h1>
+    <p class="header-sub">A portrait of a learner — creative, curious, and capable. This record traces her academic journey from Grade 2 through Grade 5, with context and analysis beyond the numbers.</p>
+    <span class="header-school">Grades 2 · 3 · 4 · 5 &nbsp;|&nbsp; 2022 – 2026</span>
+  </div>
+</header>
+
+<nav class="tab-bar">
+  <div class="tab-bar-inner">
+    <button class="tab-btn" data-tab="g2" onclick="switchTab('g2')">
+      Grade 2
+      <span class="tab-year">2022–2023</span>
+    </button>
+    <button class="tab-btn" data-tab="g3" onclick="switchTab('g3')">
+      Grade 3
+      <span class="tab-year">2023–2024</span>
+    </button>
+    <button class="tab-btn" data-tab="g4" onclick="switchTab('g4')">
+      Grade 4
+      <span class="tab-year">2024–2025</span>
+    </button>
+    <button class="tab-btn" data-tab="g5" onclick="switchTab('g5')">
+      Grade 5
+      <span class="tab-year">2025–2026</span>
+    </button>
+    <button class="tab-btn" data-tab="g6" disabled>
+      Grade 6
+      <span class="tab-year">Coming Soon</span>
+    </button>
+  </div>
+</nav>
+
+<main class="content">
+
+  <!-- ══════════ GRADE 2 ══════════ -->
+  <section class="tab-panel" id="panel-g2">
+    <div class="grade-banner g2">
+      <div class="grade-num">2</div>
+      <div class="grade-info">
+        <h2>Grade 2 · 2022–2023</h2>
+        <p>Teacher: Ms. Mickle &nbsp;·&nbsp; St. Kitts International Academy<br>
+        Absences: 10 total &nbsp;·&nbsp; Tardies: 23 total</p>
+      </div>
+    </div>
+
+    <div class="analysis-box">
+      <h3>Overall Analysis</h3>
+      <p>Grade 2 shows a <span class="highlight">highly capable, well-rounded learner</span> operating with genuine confidence across all subjects. Her Science score of <span class="pos">93%</span> and Social Studies at <span class="pos">90%</span> are standout, placing her in the Distinguished to Proficient Plus range. ELA at <span class="pos">86%</span> and Math at <span class="pos">86%</span> are solidly Proficient Plus — impressive for a student with dyslexic tendencies navigating early literacy demands.</p>
+      <p>What is notable across every teacher's narrative is the consistent praise for <span class="highlight">oral communication, participation, and creative thinking</span> — skills that are often suppressed in dyslexic learners but here are thriving. Her Grade 2 teacher's closing comment — calling her "the most self-aware, resilient and talented seven-year-old" — is not routine praise. These are baselines to return to when harder years arrive.</p>
+      <p>The one recurring note — <span class="watch">working too quickly and making careless errors</span> — is a classic executive function signature associated with dyslexia. It is not a character flaw; it reflects the gap between processing speed and written output control. Math also reflects this: a high T1 (91%) dipping in T2 (80%) when fractions and shape geometry introduced more written reasoning.</p>
+    </div>
+
+    <div class="scores-heading">Academic Scores</div>
+    <div class="scores-grid">
+      <div class="score-card">
+        <div class="score-subject">English (ELA)</div>
+        <div class="score-nums">
+          <div class="score-final high">86%</div>
+        </div>
+        <div class="score-trend">T1: <strong>90%</strong> → T2: <strong>82%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:86%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Mathematics</div>
+        <div class="score-nums">
+          <div class="score-final high">86%</div>
+        </div>
+        <div class="score-trend">T1: <strong>91%</strong> → T2: <strong>80%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:86%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Social Studies</div>
+        <div class="score-nums">
+          <div class="score-final high">90%</div>
+        </div>
+        <div class="score-trend">T1: <strong>91%</strong> → T2: <strong>89%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:90%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Science</div>
+        <div class="score-nums">
+          <div class="score-final high">93%</div>
+        </div>
+        <div class="score-trend">T1: <strong>94%</strong> → T2: <strong>92%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:93%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Spanish</div>
+        <div class="score-nums">
+          <div class="score-final high">82%</div>
+        </div>
+        <div class="score-trend">T1: <strong>81%</strong> → T2: <strong>84%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:82%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Visual Arts</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Consistent across both terms</div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Phys. Ed.</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Consistent across both terms</div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Info Tech</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">T1 PASS — strong performance noted</div>
+      </div>
+    </div>
+
+    <div class="quotes-heading">Teacher Narratives</div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g2">English Language Arts</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha has a very creative mind. She enjoys writing stories and constantly applies new skills using grammar, spelling, vocabulary and reading comprehension strategies. She loves constructing stories.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha demonstrates a good understanding of different types of texts — fiction, non-fiction, and poetry. Her vocabulary is expanding and she asks and answers questions with confidence. Encourage continued practice to strengthen comprehension.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g2">Mathematics</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha demonstrates a good understanding of all math concepts taught in Grade 2. She applies various strategies and uses critical and analytical thinking skills well.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>She demonstrates a good understanding but has a tendency to work too rapidly, which leads to unintentional mistakes. As time goes on, she will overcome this challenge.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g2">Science</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha asks good questions and always reaches out proactively when she needs help. She has a scientific mind and uses her analytical thinking skills effectively. She is a very active participant in class discussions.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha demonstrates a good understanding of all science concepts in Grade 2. She has a keen eye for detail, excelling in experiments requiring careful observation, and is becoming more confident communicating her scientific findings.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g2">Visual Arts</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha's talent for art is very noticeable. She has a lot of imagination, creativity, and puts a lot of effort into everything she does. She has excellent artistic qualities.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha has shown a significant increase in her artistic and creative abilities. She is showing skill and ability in her work and always striving to achieve all her goals. Her interest and enthusiasm help her stay focused.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g2">Student Behavior</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is respectful to both teachers and peers. She is patient and kind, demonstrates responsibility daily, and takes pride in work done well.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>"She is the most self-aware, resilient and talented seven-year-old that I know. Even though at times she is stronger than she needs to be, her ability to deal with and overcome challenges is something to be admired. Please encourage her to continue shining and never stop being the light that the world needs." — Ms. Mickle</div>
+      </div>
+    </div>
+
+    <div class="habits-heading">Work Habits &amp; Social Development</div>
+    <table class="habits-table">
+      <thead><tr><th>Category</th><th>T1</th><th>T2</th></tr></thead>
+      <tbody>
+        <tr><td>Works independently</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Works well in a group</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-E">E</span></td></tr>
+        <tr><td>Strives to do best work</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Completes class work</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Communicates clearly &amp; effectively</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-E">E</span></td></tr>
+        <tr><td>Participates in discussion</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-E">E</span></td></tr>
+        <tr><td>Respects feelings of others</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-E">E</span></td></tr>
+        <tr><td>Completes homework/reading</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-S">S</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:var(--muted); margin-top:6px;"><strong>Key:</strong> E = Exceeds expectations &nbsp;·&nbsp; M = Consistently meets &nbsp;·&nbsp; S = Sometimes meets &nbsp;·&nbsp; N = Needs improvement</p>
+  </section>
+
+  <!-- ══════════ GRADE 3 ══════════ -->
+  <section class="tab-panel" id="panel-g3">
+    <div class="grade-banner g3">
+      <div class="grade-num">3</div>
+      <div class="grade-info">
+        <h2>Grade 3 · 2023–2024</h2>
+        <p>Teacher: Mrs. Keesha Dolphin &nbsp;·&nbsp; St. Kitts International Academy<br>
+        Absences: 11 total &nbsp;·&nbsp; Tardies: 10 total</p>
+      </div>
+    </div>
+
+    <div class="analysis-box">
+      <h3>Overall Analysis</h3>
+      <p>Grade 3 confirms the emerging pattern: <span class="highlight">Adiaha performs above the class level in oral, conceptual, and creative tasks, while written output and organization remain developing areas.</span> Science continues as her strongest subject at <span class="pos">91%</span> (Distinguished), and Spanish is remarkable at <span class="pos">92%</span> — suggesting that language learning through audio and repetition, the dyslexia-friendly approach used in this class, suits her well.</p>
+      <p>The most significant signal is the Math trajectory: T1 was <span class="pos">91%</span> (excellent) but T2 dropped to <span class="watch">65%</span> when the content shifted from number operations to fractions, geometry, and data handling — all requiring sustained written reasoning. This T1→T2 drop is a pattern worth watching: it mirrors the Grade 2 Math dip and will appear again in Grade 5. It is not about ability — it is about the mismatch between her oral understanding and the written demands of harder topics.</p>
+      <p>ELA at <span class="mid">82%</span> final (from 88% T1 to 75% T2) also shows this dynamic — stronger when tasks are discussion-based, more challenged when extended writing is required. The teacher noted she has a solid grasp of spelling rules but needs more practice applying them in sustained writing — a classic dyslexic profile.</p>
+    </div>
+
+    <div class="scores-heading">Academic Scores</div>
+    <div class="scores-grid">
+      <div class="score-card">
+        <div class="score-subject">English (ELA)</div>
+        <div class="score-nums">
+          <div class="score-final mid">82%</div>
+        </div>
+        <div class="score-trend">T1: <strong>88%</strong> <span class="trend-down">↓</span> T2: <strong>75%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar mid" style="width:82%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Mathematics</div>
+        <div class="score-nums">
+          <div class="score-final mid">78%</div>
+        </div>
+        <div class="score-trend">T1: <strong>91%</strong> <span class="trend-down">↓</span> T2: <strong>65%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar mid" style="width:78%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Social Studies</div>
+        <div class="score-nums">
+          <div class="score-final high">87%</div>
+        </div>
+        <div class="score-trend">T1: <strong>91%</strong> → T2: <strong>83%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:87%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Science</div>
+        <div class="score-nums">
+          <div class="score-final high">91%</div>
+        </div>
+        <div class="score-trend">T1: <strong>91%</strong> → T2: <strong>90%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:91%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Spanish</div>
+        <div class="score-nums">
+          <div class="score-final high">92%</div>
+        </div>
+        <div class="score-trend">T1: <strong>93%</strong> → T2: <strong>90%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:92%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Visual Arts</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Consistently praised — excellent work</div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Phys. Ed.</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Good improvement noted</div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Info Tech</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">T1: "Very proficient — best work"</div>
+      </div>
+    </div>
+
+    <div class="quotes-heading">Teacher Narratives</div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g3">English Language Arts</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Congratulations on a strong performance earning 88%. Your ability to analyze and interpret texts demonstrates a solid understanding of literary concepts. I commend your active participation in class discussions, where your insights contribute significantly. Great work Adiaha!</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha has shown consistent effort and progress across different areas of ELA. While she has a solid grasp of basic spelling rules, there is room for improvement with frequently used words. Encouraging regular practice with weekly spelling lists and spelling games can help enhance her skills.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g3">Mathematics</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is an excellent Math student. At times she seems to struggle with organizing her work. She doesn't always give full attention to writing down a problem, which results in wrong or avoidable mistakes. More consistency in this area would yield a higher score.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha has shown a good performance in geometry and measurement. However, there is a noticeable need for improvement in arithmetic and fractions. Utilizing visual aids, fraction manipulatives, and interactive fraction activities can help improve her understanding and confidence.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g3">Science</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Excellent term's performance in Science Adiaha. Keep up the good work!</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha has demonstrated exceptional performance in certain areas of science, particularly in projects and simple machines. She also shows strong proficiency in ecosystems and plant structures. Keep up the great work and continue to explore the wonders of science!</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g3">Spanish</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha continues enjoying Spanish lessons. She learns vocabulary quickly, likes to participate and complete assignments in a timely manner. Keep encouraging her to continue with such a good attitude in Spanish classes!</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha has the ability to learn Spanish quickly. It is necessary for her to constantly review notes on the topics covered to help memorize the basics and vocabulary. I also recommend watching the videos sent to help with memorizing. Stay focused — it's worth it!</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g3">Visual Arts</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is a great student of art class. She really enjoys her art sessions and works diligently to complete her art projects. She always amazes me with her imaginative and creative art skills.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha is doing great in her art sessions. She is so creative and always does her art projects with full dedication. She always amazes me with her excellent work.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g3">Student Behavior</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha does well when she focuses on the task at hand. She needs to improve in the area of organization. Developing stronger organizational skills would enhance her overall academic performance.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha consistently demonstrates a positive attitude and eagerness to learn. She approaches each day with enthusiasm and a genuine interest in acquiring new knowledge. Her positive demeanor fosters a supportive and encouraging learning environment for her classmates. All the very best in Grade 4!</div>
+      </div>
+    </div>
+
+    <div class="habits-heading">Work Habits &amp; Social Development</div>
+    <table class="habits-table">
+      <thead><tr><th>Category</th><th>T1</th><th>T2</th></tr></thead>
+      <tbody>
+        <tr><td>Works independently</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Works well in a group</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Communicates clearly &amp; effectively</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-E">E</span></td></tr>
+        <tr><td>Participates in discussion</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-E">E</span></td></tr>
+        <tr><td>Work is neat &amp; organized</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-S">S</span></td></tr>
+        <tr><td>Accepts responsibility</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Demonstrates self-control</td><td><span class="rating rating-E">E</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Completes homework/reading</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:var(--muted); margin-top:6px;"><strong>Key:</strong> E = Exceeds expectations &nbsp;·&nbsp; M = Consistently meets &nbsp;·&nbsp; S = Sometimes meets &nbsp;·&nbsp; N = Needs improvement</p>
+  </section>
+
+  <!-- ══════════ GRADE 4 ══════════ -->
+  <section class="tab-panel" id="panel-g4">
+    <div class="grade-banner g4">
+      <div class="grade-num">4</div>
+      <div class="grade-info">
+        <h2>Grade 4 · 2024–2025</h2>
+        <p>Teacher: Madison Oehlert &nbsp;·&nbsp; St. Kitts International Academy<br>
+        Absences: 6 total &nbsp;·&nbsp; Tardies: 32 total</p>
+      </div>
+    </div>
+
+    <div class="analysis-box">
+      <h3>Overall Analysis — The Inflated Baseline Year</h3>
+      <p>Grade 4 scores are the highest Adiaha has recorded across her academic career — ELA 80%, Math 83%, Social Studies 83%, Science 85%, Spanish 86%. But <span class="highlight">these numbers must be read alongside the do-over policy that was in place this year</span>, which allowed students to redo assessments and add marks to their totals. This artificially elevated the scores, creating a baseline that Grade 5 (operating under standard conditions) was always going to look worse against.</p>
+      <p>What the teacher narratives confirm is that the underlying patterns were identical to every other year. Ms. Oehlert's Math comments note verbatim: "Adiaha tends to make small mistakes in her work due to working too fast or being distracted. When she slows down and takes her time, Adiaha demonstrates grade appropriate skills." This is the same observation made by Ms. Mickle in Grade 2, Mrs. Dolphin in Grade 3, and Ms. Mahon in Grade 5. The scores changed; Adiaha didn't.</p>
+      <p>The most clinically valuable data point in this report card is buried in the ELA narrative: <span class="highlight">Adiaha reads 156 words per minute (79th percentile) but scores at the 59th percentile for comprehension.</span> This fluency-comprehension gap — strong decoding with lagging retention — is a well-documented signature of dyslexic-adjacent reading profiles. She can read fast; holding and processing what she reads under pressure is harder. This is worth sharing with any specialist.</p>
+      <p>The behavior narrative from Ms. Oehlert includes a line that deserves attention: <em>"This is not due to a lack of effort or respect — Adiaha genuinely gets distracted and feels bad when this happens."</em> That self-awareness is important. It rules out defiance and confirms what four years of reports suggest: an attention regulation pattern that is neurological, not motivational.</p>
+    </div>
+
+    <div class="scores-heading">Academic Scores</div>
+    <div class="scores-grid">
+      <div class="score-card">
+        <div class="score-subject">English (ELA)</div>
+        <div class="score-nums">
+          <div class="score-final high">80%</div>
+        </div>
+        <div class="score-trend">T1: <strong>82%</strong> <span class="trend-down">↓</span> T2: <strong>77%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:80%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Mathematics</div>
+        <div class="score-nums">
+          <div class="score-final high">83%</div>
+        </div>
+        <div class="score-trend">T1: <strong>84%</strong> <span class="trend-down">↓</span> T2: <strong>81%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:83%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Social Studies</div>
+        <div class="score-nums">
+          <div class="score-final high">83%</div>
+        </div>
+        <div class="score-trend">T1: <strong>84%</strong> <span class="trend-down">↓</span> T2: <strong>82%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:83%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Science</div>
+        <div class="score-nums">
+          <div class="score-final high">85%</div>
+        </div>
+        <div class="score-trend">T1: <strong>89%</strong> <span class="trend-down">↓</span> T2: <strong>80%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:85%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Spanish</div>
+        <div class="score-nums">
+          <div class="score-final high">86%</div>
+        </div>
+        <div class="score-trend">T1: <strong>88%</strong> <span class="trend-down">↓</span> T2: <strong>89%</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:86%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Visual Arts</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Focus improved — quality work</div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Phys. Ed.</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Excellent effort and sportsmanship</div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Info Tech</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Motivated — asks good questions</div>
+      </div>
+    </div>
+
+    <div class="analysis-box" style="border-left: 4px solid var(--gold); margin-top: 8px;">
+      <h3>Key Reading Data — Grade 4 ELA</h3>
+      <p>Ms. Oehlert recorded specific reading assessment data that provides a rare quantified look at Adiaha's literacy profile:</p>
+      <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
+        <div style="background: #f0f7f5; border-radius: 8px; padding: 14px;">
+          <div style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Reading Fluency</div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--teal);">156 wpm</div>
+          <div style="font-size: 12px; color: var(--teal);">79th percentile — Above average</div>
+          <div style="font-size: 12px; color: #3a3a3a; margin-top: 4px;">+18 words since Term 1</div>
+        </div>
+        <div style="background: #fdf3dc; border-radius: 8px; padding: 14px;">
+          <div style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Comprehension</div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--g4);">59th percentile</div>
+          <div style="font-size: 12px; color: var(--g4);">High average — but below fluency</div>
+          <div style="font-size: 12px; color: #3a3a3a; margin-top: 4px;">The fluency–comprehension gap is notable</div>
+        </div>
+      </div>
+      <p style="margin-top: 14px; font-size: 13.5px; color: #3a3a3a; line-height: 1.7;">A 20-percentile gap between how fast she reads and how much she retains under test conditions is consistent with a reading profile that includes dyslexic-adjacent processing differences. Strong oral comprehension (she discusses texts well) but weaker written comprehension test performance suggests working memory load rather than a true understanding gap.</p>
+    </div>
+
+    <div class="quotes-heading">Teacher Narratives</div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g4">English Language Arts</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is performing well in ELA. She reads 156 correct words per minute — an 18-word increase since the fall — placing her at the 79th percentile (above average). She also has great comprehension skills at the 59th percentile (high average). When it comes to writing, Adiaha loves to use her big imagination in stories. She comes up with great ideas, but can sometimes struggle putting them down — she often forgets to write some words or forgets to utilize her grammar knowledge when distracted. She has the tools to be a successful writer. She just needs to slow down, take her time, and listen to the instructions given.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha is working hard in ELA. She does well with identifying types of sentences — interrogative, exclamatory, declarative, and imperative. She was very engaged in class discussions on the novel Esperanza Rising and has comprehended the story well. Adiaha does well in class grammar activities like conjunctions, abbreviations, apostrophes and colons. One area in which Adiaha can improve would be working on her organization — from time to time she misplaces important papers.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g4">Mathematics</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha has been enjoying math this year. She likes learning new skills and finding strategies that she is successful with. Adiaha tends to make small mistakes in her work due to working too fast or being distracted. When she slows down and takes her time, Adiaha demonstrates grade appropriate skills. She can solve problems using all four operations and whole numbers. She does well with adding, subtracting, and converting fractions but can need reminders if the skills are mixed together. After prompts or reminders, she is able to demonstrate these skills again. Adiaha is right where she needs to be with her math skills.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha is great at mathematics. She does a good job identifying different prisms and pyramids. She also had a strong performance on the unit covering area. Adiaha has demonstrated a strong performance on our unit on time — her ability to move between twelve and twenty-four hour time was strong. Adiaha tends to make small mistakes in her work due to working too fast or being distracted. When she slows down and takes her time, Adiaha demonstrates grade appropriate skills. Keep working hard, you've got this!</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g4">Science</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha was really engaged in the habitat unit. She loved learning about various animals and how they lived. She has excellent knowledge of organisms, ecosystems, and survival needs. While she doesn't enjoy the rock cycle as much as habitats, Adiaha worked hard throughout the unit. She really enjoys talking about various minerals and benefited greatly from the hands-on science labs.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha enjoys science class. Her curious mind serves her well. She is always engaged and asking questions. Adiaha has a great understanding of light and sound — she understands reflection, refraction, and absorption, as well as echolocation and the Doppler effect. Stay curious Adiaha, it will serve you well!</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g4">Social Studies</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha enjoys looking at maps and learning about new places. She has been enjoying a new chapter on the United States. She has plenty of questions and is eager to learn. Adiaha has a good understanding of map keys, scales, and compass rose. She understands the foundational basics of geography and does an excellent job making text-to-text connections to what we are learning in science.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha is working hard in social studies. She understands modern life in South America and vocabulary from various topics. She is still developing her understanding of the history and colonization of South America. On her assessments, she does well on basic recall, however at times struggles to apply her knowledge to answer abstract questions or infer information from a given excerpt. As she progresses through the grades, this higher level analysis and application will become the standard — continued support in this area is key.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g4">Spanish</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is showing good growth in Spanish and consistently makes a strong effort to do well. She approaches each lesson with a positive attitude and is committed to improving her skills. While there is still room for further development, her hard work and dedication are evident and she is steadily progressing. I look forward to seeing her continue to thrive in Spanish. Keep up the great effort!</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha is on the right track and shows interest in Spanish. Still, more attention in class and fewer distractions would help her improve. It's important to ask questions rather than stay confused. Learning a second language is a life advantage. Adiaha, stay focused on learning Spanish in the years to come. You have the potential!</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g4">Visual Arts</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is an enthusiastic child. She is so creative and imaginative and always excited to learn new elements of art. She enjoys her art projects very much. At times she needs to focus more so that she can complete her work in a timely manner. Keep working hard! I love the creative spirit!</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha brings great energy and excitement to art class. She is eager to learn new things and always tries her best. Her focus has improved, and it shows in the quality of her work. She enjoys sharing her creative ideas with others. Wonderful job, Adiaha!</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g4">Student Behavior</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is a very sweet, bright, and bubbly girl. She lives life to the fullest. She has many friends and gets along well with her peers. While Adiaha always does her best, she can struggle to stay focused. She often gets distracted by objects or gets lost in thoughts. On a daily basis, Adiaha has to ask for a repeat of instructions or has to be reminded to get back to work. <strong>This is not due to a lack of effort or respect — Adiaha genuinely gets distracted and feels bad when this happens.</strong> Overall, Adiaha is an amazing kid and is a joy to have in class!</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha is a kind, bright, bubbly, and social girl. She radiates happiness and brings joy to the classroom. I have always admired Adiaha's confidence in who she is. Adiaha works hard and wants to make the adults in her life proud. Adiaha needs to continue to work on staying organized, listening to instructions, and turning in her work. Adiaha's lack of organization impacts her grades, so helping her improve in this area will help her overall performance.</div>
+      </div>
+    </div>
+
+    <div class="habits-heading">Work Habits &amp; Social Development (Grade 4)</div>
+    <table class="habits-table">
+      <thead><tr><th>Category</th><th>T1</th><th>T2</th></tr></thead>
+      <tbody>
+        <tr><td>Works independently</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-S">S</span></td></tr>
+        <tr><td>Works well in a group</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-S">S</span></td></tr>
+        <tr><td>Strives to do best work</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Completes class work</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-S">S</span></td></tr>
+        <tr><td>Completes homework/reading</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-S">S</span></td></tr>
+        <tr><td>Maintains attention to teacher</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-S">S</span></td></tr>
+        <tr><td>Makes effective use of time</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-S">S</span></td></tr>
+        <tr><td>Communicates clearly &amp; effectively</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Follows school rules</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Gets along well with others</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Resolves conflict</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Respects feelings of others</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Demonstrates self-control</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-S">S</span></td></tr>
+        <tr><td>Keeps workspace organized</td><td><span class="rating rating-I">I</span></td><td><span class="rating rating-N">N</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:var(--muted); margin-top:6px;"><strong>Key:</strong> E = Exceeds expectations &nbsp;·&nbsp; M = Consistently meets &nbsp;·&nbsp; S = Sometimes meets &nbsp;·&nbsp; I = Shows improvement &nbsp;·&nbsp; N = Needs improvement</p>
+    <p style="font-size:12px; color:#3a3a3a; margin-top: 10px; padding: 10px 14px; background: #fdf3dc; border-left: 3px solid var(--g4); border-radius: 4px;"><strong>Note:</strong> The "Keeps workspace organized" declining from I → N across terms is the clearest signal on this report card. Organization and materials management is a classic executive function challenge associated with dyslexic and ADHD-adjacent profiles. It is not a behavioral problem — it is a skill that requires explicit, structured support.</p>
+  </section>
+
+  <!-- ══════════ GRADE 5 ══════════ -->
+  <section class="tab-panel" id="panel-g5">
+    <div class="grade-banner g5">
+      <div class="grade-num">5</div>
+      <div class="grade-info">
+        <h2>Grade 5 · 2025–2026</h2>
+        <p>Teacher: Terry-Ann Mahon &nbsp;·&nbsp; St. Kitts International Academy<br>
+        Moving to Grade 6</p>
+      </div>
+    </div>
+
+    <div class="analysis-box">
+      <h3>Overall Analysis — Reading This Report in Context</h3>
+      <p>Grade 5 represents the most demanding academic year Adiaha has faced, and the scores reflect exactly that — but <span class="highlight">they tell a story of recovery and growth, not failure.</span> Several important factors shape how this report should be read:</p>
+      <p><strong>Grade 4 was inflated.</strong> The Grade 4 system allowed do-overs to be added to grades, artificially lifting scores. That context makes the Grade 5 numbers look like a larger drop than they truly are. The real comparison point is Grade 3, and in that light, Adiaha is navigating a harder curriculum with reasonable footing.</p>
+      <p><strong>The T1 → T2 trajectory is the real headline.</strong> She improved in <span class="pos">every graded subject from Term 1 to Term 2</span>: ELA (+6), Science (+14), Spanish (+3), Math (+5), and Social Studies was the only subject that moved in the other direction (-6), likely reflecting the heavier essay-and-map-skills demands of the Asia unit. This mid-year recovery is even more remarkable when you consider that <span class="highlight">Adiaha began the year with undiagnosed visual difficulties</span> — she did not receive her glasses until approximately two months into Term 1. That means her lowest scores were recorded while she was literally struggling to see the board. The improvement from Term 1 to Term 2 reflects not just academic adjustment, but a student finally learning under the conditions she should have had from day one. That is a genuine marker of <span class="highlight">resilience and determination.</span></p>
+      <p>Math at <span class="watch">63%</span> is the one area that needs deliberate support in Grade 6. The teacher is right: she understands the concepts orally but does not write her working clearly — a pattern consistent with dyslexic processing of symbolic notation. Multiplication table fluency and "show your steps" habits are the two practical targets heading into Grade 6.</p>
+      <p>Science at <span class="mid">79%</span> looks like a dip from her historical highs, but the T1→T2 jump from <span class="watch">72</span> to <span class="pos">86</span> is extraordinary — the highest single-subject term improvement on the entire report card. She remains a natural scientist. The Teacher's comment calling her a "budding scientist" who "confidently contributes and makes useful links between course content and her own experiences" is the Adiaha we know.</p>
+    </div>
+
+    <div class="scores-heading">Academic Scores</div>
+    <div class="scores-grid">
+      <div class="score-card">
+        <div class="score-subject">English (ELA)</div>
+        <div class="score-nums">
+          <div class="score-final mid">75%</div>
+        </div>
+        <div class="score-trend">T1: <strong>72</strong> <span class="trend-up">↑</span> T2: <strong>78</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar mid" style="width:75%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Mathematics</div>
+        <div class="score-nums">
+          <div class="score-final low">63%</div>
+        </div>
+        <div class="score-trend">T1: <strong>60</strong> <span class="trend-up">↑</span> T2: <strong>65</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar low" style="width:63%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Social Studies</div>
+        <div class="score-nums">
+          <div class="score-final mid">77%</div>
+        </div>
+        <div class="score-trend">T1: <strong>80</strong> <span class="trend-down">↓</span> T2: <strong>74</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar mid" style="width:77%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Science</div>
+        <div class="score-nums">
+          <div class="score-final mid">79%</div>
+        </div>
+        <div class="score-trend">T1: <strong>72</strong> <span class="trend-up">↑</span> T2: <strong>86</strong> 🔥</div>
+        <div class="score-bar-wrap"><div class="score-bar mid" style="width:79%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Spanish</div>
+        <div class="score-nums">
+          <div class="score-final high">80%</div>
+        </div>
+        <div class="score-trend">T1: <strong>78</strong> <span class="trend-up">↑</span> T2: <strong>81</strong></div>
+        <div class="score-bar-wrap"><div class="score-bar high" style="width:80%"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Visual Arts</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Praised for sketching & dedication</div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Phys. Ed.</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Determined, embraces every challenge</div>
+      </div>
+      <div class="score-card">
+        <div class="score-subject">Health &amp; Social</div>
+        <div class="score-nums">
+          <div class="score-final pass">PASS</div>
+        </div>
+        <div class="score-trend">Good understanding, mature discussions</div>
+      </div>
+    </div>
+
+    <div class="analysis-box" style="border-left: 4px solid var(--gold); margin-top: 8px;">
+      <h3>The T1 → T2 Growth Story</h3>
+      <p>The most important thing about this report card is what happened between Term 1 and Term 2. Adiaha hit a difficult first half — a new school, harder content, and crucially, <span class="highlight">undiagnosed visual difficulties that weren't corrected until roughly two months into Term 1</span>. She was doing schoolwork she could barely see. Once she got her glasses, <span class="highlight">she turned it around</span>. The table below captures that growth:</p>
+      <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;">
+        <div style="background: #f0f7f5; border-radius: 8px; padding: 12px; text-align: center;">
+          <div style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">ELA</div>
+          <div style="font-size: 1.3rem; font-weight: 700; color: var(--teal);">72 → 78</div>
+          <div style="font-size: 11px; color: var(--teal);">+6 points</div>
+        </div>
+        <div style="background: #f0f7f5; border-radius: 8px; padding: 12px; text-align: center;">
+          <div style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Science</div>
+          <div style="font-size: 1.3rem; font-weight: 700; color: var(--teal);">72 → 86</div>
+          <div style="font-size: 11px; color: var(--teal);">+14 points ⭐</div>
+        </div>
+        <div style="background: #f0f7f5; border-radius: 8px; padding: 12px; text-align: center;">
+          <div style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Spanish</div>
+          <div style="font-size: 1.3rem; font-weight: 700; color: var(--teal);">78 → 81</div>
+          <div style="font-size: 11px; color: var(--teal);">+3 points</div>
+        </div>
+        <div style="background: #f0f7f5; border-radius: 8px; padding: 12px; text-align: center;">
+          <div style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Math</div>
+          <div style="font-size: 1.3rem; font-weight: 700; color: var(--teal);">60 → 65</div>
+          <div style="font-size: 11px; color: var(--teal);">+5 points</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quotes-heading">Teacher Narratives</div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g5">English Language Arts</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is a very creative and bubbly student who brings positive energy to the classroom. Her creativity allows her to express ideas in imaginative and thoughtful ways. Areas for review: pluralizing nouns, collective nouns, punctuation, and organizational habits. With increased focus, she is capable of producing stronger, more polished work.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha is a motivated and hardworking student who genuinely strives to do her best. She approaches tasks with a positive attitude. She has thoroughly enjoyed our novel study and consistently demonstrates enthusiasm during discussions. She is also a confident and capable speaker who shines during oral presentations. Well-positioned for success — looking forward to welcoming her into Grade 6.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g5">Mathematics</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha shows potential to excel in mathematics and generally works hard. She has done well in areas such as finding the Value and Place Value of numbers, calculating HCF and LCM. She is currently sitting on the passing mark for SKI Academy; greater improvement is needed for advancement.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha has done well in topics such as probability, integers, and drawing angles, where she has shown a sound understanding and some success. Her progress will improve further when she takes more care to show all the steps in her working. Fluency in multiplication tables will also help reduce errors and increase confidence when working independently.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g5">Science</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is now more organised than when she started in September. She demonstrates a sound understanding of States and Changes of Matter, the Water Cycle, and the Digestive System. She works well independently and contributes positively to class discussions. To improve her written work, Adiaha should aim to include more detailed explanations and examples.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha is a budding scientist who shows a positive attitude towards her learning and is always willing to explain her answers scientifically to the class. She confidently contributes to discussion and often makes useful links between the course content and her own experiences. She has done well in energy conservation and simple machines, where she has demonstrated a secure grasp of the work covered.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g5">Social Studies</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha has a confident and well-developed understanding of the Social Studies units studied this term, particularly in economics and geography. She explains how goods, services, and resources are connected with accuracy and shows strong reasoning skills. Her knowledge of physical features and map skills is consistently accurate.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha approached the study of Asia with enthusiasm and demonstrated a developing understanding of the regions and concepts explored. She showed knowledge of ancient Chinese inventions and participated in discussions about how geography influences how people live. She brings a warm and positive presence to the classroom — with improved focus and continued effort, she has the potential to make even greater progress.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g5">Spanish</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha has made noticeable improvement in Spanish and continues to progress steadily. She is more focused during class activities and showing growth in her learning. Continued attention to grammar rules and consistent review of Spanish verb strategies will support her development.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha wraps up the school year needing to place a greater emphasis on classroom focus and study routines. She has the potential to overcome her struggles with Spanish, but it will require a strong commitment to remaining focused. Prioritizing more frequent vocabulary and grammar review, alongside a dedicated effort to stay on task, will greatly support her academic growth.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g5">Visual Arts</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is a joyful and artistic student who enjoys art class. She shows great interest in learning new elements of art, shows improvement in drawing skills, and continues to work hard. She has strong artistic talent and creativity.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>Adiaha is an enthusiastic and cheerful student who enjoys her art sessions very much. From Term 1 to Term 2, Adiaha has made good progress in her drawing and sketching skills. She is confident in asking questions and sharing her creative ideas, which is lovely to see. I am sure she will continue to do very well.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-subject-bar g5">Student Behavior</div>
+      <div class="quote-terms">
+        <div class="quote-term"><span class="quote-term-label">Term 1</span>Adiaha is a sweet and warm student who brings happiness and enthusiasm to the classroom each day. She consistently tries her hardest across all subject areas and approaches her learning with a positive attitude. She is generally helpful, friendly, and works well with her peers.</div>
+        <div class="quote-term"><span class="quote-term-label">Term 2</span>"Adiaha is truly the personification of sunshine, bringing warmth and positivity wherever she goes. She is consistently cheerful, always smiling, and has a natural ability to make every member of the Grade 5 class feel welcomed and included. Adiaha demonstrates a high level of respect in her interactions with teachers and all adults, which is commendable." — Looking forward to welcoming her into Grade 6.</div>
+      </div>
+    </div>
+
+    <div class="habits-heading">Work Habits &amp; Social Development (Grade 5)</div>
+    <table class="habits-table">
+      <thead><tr><th>Category</th><th>T1</th><th>T2</th></tr></thead>
+      <tbody>
+        <tr><td>Works independently</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Works well in a group</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Strives to do best work</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Completes class work</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Communicates clearly &amp; effectively</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-S">S</span></td></tr>
+        <tr><td>Makes effective use of time</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-N">N</span></td></tr>
+        <tr><td>Follows directions</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-N">N</span></td></tr>
+        <tr><td>Maintains attention to teacher</td><td><span class="rating rating-S">S</span></td><td><span class="rating rating-N">N</span></td></tr>
+        <tr><td>Follows school rules</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Gets along well with others</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Accepts responsibility</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Demonstrates self-control</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+        <tr><td>Manages own emotions</td><td><span class="rating rating-M">M</span></td><td><span class="rating rating-M">M</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:var(--muted); margin-top:6px;"><strong>Key:</strong> E = Exceeds expectations &nbsp;·&nbsp; M = Consistently meets &nbsp;·&nbsp; S = Sometimes meets &nbsp;·&nbsp; N = Needs improvement</p>
+    <p style="font-size:12px; color:#3a3a3a; margin-top: 10px; padding: 10px 14px; background: #fff8e8; border-left: 3px solid var(--gold); border-radius: 4px;"><strong>Note on Work Habits:</strong> The T2 dip in attention and time management is consistent with the increased demands of Grade 5 content — not a character regression. The social development scores remain consistently solid (all M), confirming Adiaha's emotional maturity and peer relationships are stable and healthy.</p>
+  </section>
+
+  <!-- ══════════ GRADE 6 (placeholder) ══════════ -->
+  <section class="tab-panel" id="panel-g6">
+    <div class="coming-soon">
+      <div class="cs-icon">📋</div>
+      <h3>Grade 6 — Coming Soon</h3>
+      <p>This tab will be populated with Adiaha's Grade 6 report card when it becomes available.</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+    const btn = document.querySelector('.tab-btn[data-tab="' + tabId + '"]');
+    const panel = document.getElementById('panel-' + tabId);
+    if (btn) btn.classList.add('active');
+    if (panel) panel.classList.add('active');
+  }
+  // Default: open Grade 5 (most recent)
+  switchTab('g5');
+</script>
+</body>
+</html>
